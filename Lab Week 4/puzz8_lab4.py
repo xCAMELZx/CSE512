@@ -219,7 +219,7 @@ def move_blank_right(pz):
             blank = (i,j)
             break
     if blank[1] == 3:
-        # blank cannot move left
+        # blank cannot move right
         return None
     
     tile = newpz[(i,j+1)]
