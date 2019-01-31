@@ -6,6 +6,10 @@
 # data structures and functions that will enable us to solve 8-puzzles
 # with graphsearch
 
+# Yousef Jarrar - CSE 512 - Winter 2019 
+# Water Jug Problem, with the use of bestfirst_astar_search_lab4.py 
+# Implementation comes from puzz8
+
 import random
 import copy
 

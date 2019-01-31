@@ -1,3 +1,7 @@
+# Yousef Jarrar - CSE 512 - Winter 2019 
+# Water Jug Problem, with the use of bestfirst_astar_search_lab4.py 
+# Implementation comes from puzz8
+
 from bestfirst_astar_search_lab4 import *
 
 # first define goal -- 0 litres in 3l jug, 2 litres in 4l jug
