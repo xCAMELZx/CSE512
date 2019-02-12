@@ -3,7 +3,7 @@
 # new in Jan 2019; use a class Node to bundle all relevant
 # state information
 
-# Yousef Jarrar - CSE 512 - Winter 2019 
+# Yousef Jarrar, Nicholas Chiodini - CSE 512 - Winter 2019 
 # Water Jug Problem, with the use of bestfirst_astar_search_lab4.py 
 # Implementation comes from puzz8
 
