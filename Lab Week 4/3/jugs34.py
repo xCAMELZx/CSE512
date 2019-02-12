@@ -1,10 +1,10 @@
-# Yousef Jarrar - CSE 512 - Winter 2019 
+# Yousef Jarrar, Nicholas Chiodini- CSE 512 - Winter 2019 
 # Water Jug Problem, with the use of bestfirst_astar_search_lab4.py 
 # Implementation comes from puzz8
 
 from bestfirst_astar_search_lab4 import *
 
-# first define goal -- 0 litres in 3l jug, 2 litres in 4l jug
+# first define goal -- 0 liters in 3l jug, 2 liters in 4l jug
 # we represent state as a simple 2-element list
 GOAL = [0, 2]
 
@@ -17,7 +17,7 @@ def goal_fct(jugs, goal):
 		return False
 
 
-# score is a distance from goal in litres (in both directions)
+# score is a distance from goal in liters (in both directions)
 def eval_fct(jugs, goal):
 	return abs(jugs[0]-goal[0]) + abs(jugs[1]-goal[1])
 
@@ -25,7 +25,7 @@ def eval_fct(jugs, goal):
 def successor_fct(jugs):
 	moves = []
 
-	left, right = jugs  # ammount in left and right jugs
+	left, right = jugs  # amount in left and right jugs
 
 	# non-empty left jug means we can empty it
 	if left > 0:
