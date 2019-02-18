@@ -1,0 +1,26 @@
+The program is designed in accordance with the requirements.
+
+A starter template is provided. 
+We only need to complete the implementation of functions 
+
+extract_path(nd, closed) in astar_midterm.py
+and
+puzz8_eval_fct_B (pz, goal) in file puzz8_midterm.py
+
+
+In the function extract_path(nd, closed), the second argument is redundant, the path can be found without it.
+In addition, if you take values only from closed , then there will be no goal on the path, since the closed  does not contain a goal.
+
+
+In the function puzz8_eval_fct_B (pz, goal) , we organize a loop that iterates through all the puzzle cells in the goal state. Inside this loop, there is another loop that finds a cell with the same value in the current state. The  horizontal and vertical displacements (absolute value) is calculated and added to the sum.
+
+
+As can be seen from the results of the program, the number of iteration steps is significantly reduced when using the sum of the horizontal and vertical displacements for all tiles in the puzzle state relative to the goal state. (On complex examples)
+
+
+The program was tested on Windows(PyCharm IDE) and Linux from terminal.
+
+The program contains a large number of comments and I hope everything will be clear.
+If you have questions, I will be glad to help.
+
+
