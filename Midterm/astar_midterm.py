@@ -1,6 +1,6 @@
 # astar_midterm.py
 
-# STUDENT COMPLETER: ______________________
+# STUDENT COMPLETER: Yousef Jarrar
 
 #
 # Nodes with parent; compute solution path rather than

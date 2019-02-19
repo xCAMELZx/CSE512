@@ -1,6 +1,6 @@
 # puzz8_midterm.py
 
-# STUDENT COMPLETER: __________________
+# STUDENT COMPLETER: Yousef Jarrar
 
 
 #
