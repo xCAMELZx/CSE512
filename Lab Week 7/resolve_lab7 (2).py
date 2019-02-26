@@ -1,5 +1,6 @@
-# cse512_lab8.py
-# KV, Mar 2018, solution for lab8 and beyond
+# 
+#
+#
 
 import copy
 import itertools  # just to try it out; used once, see below
@@ -7,16 +8,13 @@ import random
 
 CLS = [['notP', 'notQ', 'R'],  ['P', 'R'], ['Q', 'R'], ['notR']]
 
-# set up to prove that H2CO3 by contradicting notH2CO3
-CLS_SAT = [['notCO2', 'notH2O','H2CO3'], ['notC', 'notO2', 'CO2'],\
+CLS_SAT = [['notP', 'notQ', 'R'],  ['P', 'R'], ['Q', 'R'], ['R']]
+
+H2CO3 = [['notCO2', 'notH2O','H2CO3'], ['notC', 'notO2', 'CO2'],\
         ['notMgO', 'notH2', 'Mg'], ['notMgO', 'notH2','H2O'],
         ['MgO'], ['H2'], ['O2'], ['C'], ['notH2CO3']]
 
-# CHEM with positive H2CO3 ... resolve should terminate with
-# failure to find contradiction
-CLS_H2C03 = [['notCO2', 'notH2O','H2CO3'], ['notC', 'notO2', 'CO2'],\
-        ['notMgO', 'notH2', 'Mg'], ['notMgO', 'notH2','H2O'],
-        ['MgO'], ['H2'], ['O2'], ['C'], ['H2CO3']]
+
 
 def is_neg(x):
   if len(x) >= 4 and x[:3] == 'not':
@@ -125,28 +123,9 @@ def resolve (cls):
       
     if n == oldn:
       return 'SATISFIABLE -- NO CONTRADICTION'
-    
 
+##print (resolve(CLS))
 
+print (resolve(CLS_SAT))
 
-
-
-    
-  
-  
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-    
-    
+##print (resolve(H2CO3))
