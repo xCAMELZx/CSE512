@@ -1,22 +1,24 @@
-# cse512_lab8.py
-# KV, Mar 2018, solution for lab8 and beyond
+##
+##Nick Chiodini
+##Yousef Jarrar
+##CSE 512
+##HW 3
+##
+
 
 import copy
-import itertools  # just to try it out; used once, see below
+import itertools  
 import random
 
 CLS = [['notP', 'notQ', 'R'],  ['P', 'R'], ['Q', 'R'], ['notR']]
 
-# set up to prove that H2CO3 by contradicting notH2CO3
-CLS_SAT = [['notCO2', 'notH2O','H2CO3'], ['notC', 'notO2', 'CO2'],\
+CLS_SAT = [['notP', 'notQ', 'R'],  ['P', 'R'], ['Q', 'R'], ['R']]
+
+CLS_H2CO3 = [['notCO2', 'notH2O','H2CO3'], ['notC', 'notO2', 'CO2'],\
         ['notMgO', 'notH2', 'Mg'], ['notMgO', 'notH2','H2O'],
         ['MgO'], ['H2'], ['O2'], ['C'], ['notH2CO3']]
 
-# CHEM with positive H2CO3 ... resolve should terminate with
-# failure to find contradiction
-CLS_H2C03 = [['notCO2', 'notH2O','H2CO3'], ['notC', 'notO2', 'CO2'],\
-        ['notMgO', 'notH2', 'Mg'], ['notMgO', 'notH2','H2O'],
-        ['MgO'], ['H2'], ['O2'], ['C'], ['H2CO3']]
+
 
 def is_neg(x):
   if len(x) >= 4 and x[:3] == 'not':
@@ -37,7 +39,7 @@ def complements(x,y):
   else:
     return None
 
-# does lst1 contain variable that has complement in lst1
+#check for compliments
 def have_complements(lst1, lst2):
   for x in lst1:
     for y in lst2:
@@ -60,28 +62,28 @@ def is_same(lst1, lst2):
     return False
   return len(set(lst1).intersection(set(lst2))) == len(lst1)
 
-# true if lst contains a member that is_same as x
+
 def member(x, lst):
   for y in lst:
     if is_same(x,y):
       return True
   return False
 
-# call this function to APPLY RESOLUTION
+#lab 7 algorithm
 
 def resolve (cls):
-  thecls = copy.deepcopy(cls)
-  random.shuffle(thecls)
+  maincls = copy.deepcopy(cls)
+  random.shuffle(maincls)
   steps = 1
   n = len(cls)
   while True:
     oldn = n
-    for i in range(len(thecls)-1):
+    for i in range(len(maincls)-1):
       res_found = False
-      for j in range(i,len(thecls)):
-        c1 = thecls[i][:] # copy
-        c2 = thecls[j][:] # copy
-        #print "TRYING %s and %s" % (c1,c2)
+      for j in range(i,len(maincls)):
+        c1 = maincls[i][:] # make a copy
+        c2 = maincls[j][:] # make a copy
+       
 
         comps = have_complements(c1,c2)
     
@@ -89,64 +91,42 @@ def resolve (cls):
           continue
 
         # c1 and c2 are complements
-        # combine c1 and c2 into c3 minus x and cx
+        # combine c1 and c2 into c3
         (x,cx) = comps
         c3 = c1
         for y in c2:
           if not y in c3:
             c3.append(y)
 
-        #print "c3 before removal of comps: %s" % c3
         c3.remove(x)
         c3.remove(cx)
-        #print "c3 after removal of comps: %s" % c3
+        
 
         if c3 == []:
-          print "%d. %s with %s ==> []" % (steps,thecls[i],thecls[j])
-          return  'UNSATISFIABLE -- CONTRADICTION'
+          print "%d. %s with %s -> []" % (steps,maincls[i],maincls[j])
+          return  'UNSATISFIABLE AKA CONTRADICTION'
 
         if contains_comps(c3):
           #print "c3 contains complements -- ignore"
           continue
         
-        if member(c3,thecls):
-          #print "c3 already exists in thecls -- ignore"
-          #print "thecls: %s" % thecls
+        if member(c3,maincls):
           continue
         
-        thecls.append(c3)
-        print "%d. %s with %s ==> %s" % (steps,thecls[i],thecls[j],c3) 
+        maincls.append(c3)
+        print "%d. %s with %s -> %s" % (steps,maincls[i],maincls[j],c3) 
         n += 1
         steps += 1
         res_found = True
-        break # from inner for-loop
+        break # from inner loop
       if res_found:
-        break # from outer for-loop
+        break # from outer loop
       
     if n == oldn:
-      return 'SATISFIABLE -- NO CONTRADICTION'
-    
+      return 'SATISFIABLE AKA NO CONTRADICTION'
 
+##print (resolve(CLS))
 
+##print (resolve(CLS_SAT))
 
-
-
-    
-  
-  
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-    
-    
+##print (resolve(H2CO3))
